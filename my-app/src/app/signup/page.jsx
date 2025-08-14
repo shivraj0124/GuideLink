@@ -12,10 +12,10 @@ export default function SignupPage() {
   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const [email, setEmail] = useState("");
-  const [step, setStep] = useState("email"); // removed TypeScript type
+  const [step, setStep] = useState("email"); // removed type annotation
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
-  const [skills, setSkills] = useState([]); // removed string[] type
+  const [skills, setSkills] = useState([]);
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -80,7 +80,7 @@ export default function SignupPage() {
         skills: skills,
       });
       toast.success(res.data.message);
-      router.push("/login");
+      router.push("login");
     } catch (err) {
       toast.error(err?.response?.data?.error || "Failed to register.");
     }
@@ -102,7 +102,7 @@ export default function SignupPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full border rounded-lg px-4 py-2 outline-none"
+              className="w-full border text-black rounded-lg px-4 py-2 outline-none"
             />
             <button
               onClick={handleSendOtp}
@@ -132,7 +132,7 @@ export default function SignupPage() {
               value={otp}
               onChange={(e) => setOtp(e.target.value)}
               required
-              className="w-full border rounded-lg px-4 py-2 outline-none"
+              className="w-full text-black border rounded-lg px-4 py-2 outline-none"
             />
             <button
               onClick={handleVerifyOtp}
@@ -141,7 +141,6 @@ export default function SignupPage() {
             >
               {loading ? "Verifying..." : "Verify OTP"}
             </button>
-
             <p className="text-center text-sm text-gray-600">
               Already have an account?{" "}
               <Link
@@ -162,7 +161,7 @@ export default function SignupPage() {
               placeholder="Username"
               value={form.username}
               onChange={(e) => setForm({ ...form, username: e.target.value })}
-              className="w-full border rounded-lg px-4 py-2 outline-none"
+              className="w-full text-black border rounded-lg px-4 py-2 outline-none"
             />
             <input
               type="password"
@@ -170,29 +169,26 @@ export default function SignupPage() {
               placeholder="Password"
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
-              className="w-full border rounded-lg px-4 py-2 outline-none"
+              className="w-full text-black border rounded-lg px-4 py-2 outline-none"
             />
             <select
               name="role"
               value={form.role}
               onChange={(e) => setForm({ ...form, role: e.target.value })}
-              className="w-full border rounded-lg px-4 py-2 outline-none"
+              className="w-full text-black border rounded-lg px-4 py-2 outline-none"
             >
               <option value="">Select Role</option>
               <option value="Student">Student</option>
               <option value="Mentor">Mentor</option>
             </select>
-
             <SkillsSelector initialSkills={[]} onChange={handleSkillsChange} />
-
             <button
               onClick={handleFinalSubmit}
               disabled={loading}
-              className="w-full bg-indigo-600 cursor-pointer text-white font-bold py-2 rounded-lg hover:bg-indigo-700 transition"
+              className="w-full text-white bg-indigo-600 cursor-pointer  font-bold py-2 rounded-lg hover:bg-indigo-700 transition"
             >
               {loading ? "Registering..." : "Sign Up"}
             </button>
-
             <p className="text-center text-sm text-gray-600">
               Already have an account?{" "}
               <Link

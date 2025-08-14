@@ -57,7 +57,7 @@ export default function SkillsSelector({ initialSkills = [], onChange }) {
         {skills.map((skill) => (
           <span
             key={skill}
-            className="bg-green-200 text-green-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-green-300"
+            className="bg-green-200  text-green-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-green-300"
             onClick={() => removeSkill(skill)}
           >
             {skill} ✕
@@ -71,7 +71,7 @@ export default function SkillsSelector({ initialSkills = [], onChange }) {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Type a skill..."
-        className="border p-2 rounded w-full mb-2"
+        className="border text-black p-2 rounded w-full mb-2"
       />
 
       {/* Suggestions */}
@@ -80,7 +80,7 @@ export default function SkillsSelector({ initialSkills = [], onChange }) {
           {filteredSkills.map((skill) => (
             <li
               key={skill}
-              className="p-2 hover:bg-gray-100 cursor-pointer"
+              className="p-2 text-black hover:bg-gray-100 cursor-pointer"
               onClick={() => addSkill(skill)}
             >
               {skill}
