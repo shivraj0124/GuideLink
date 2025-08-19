@@ -178,7 +178,7 @@ export default function SignupPage() {
               className="w-full text-black border rounded-lg px-4 py-2 outline-none"
             >
               <option value="">Select Role</option>
-              <option value="Student">Student</option>
+              <option value="Mentee">Mentee</option>
               <option value="Mentor">Mentor</option>
             </select>
             <SkillsSelector initialSkills={[]} onChange={handleSkillsChange} />

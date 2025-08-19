@@ -7,7 +7,7 @@ export default function Hero() {
   const router = useRouter();
 
   return (
-    <section className="relative bg-gradient-to-br from-blue-50 to-blue-100 md:py-16 min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative bg-gradient-to-br from-blue-50 to-blue-100 md:py-16 min-h-screen flex items-center justify-center overflow-hidden">
       {/* Decorative Shape */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
 

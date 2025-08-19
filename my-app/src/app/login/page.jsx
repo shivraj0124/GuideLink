@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "../../context/AuthProvider";
 
 export default function LoginPage() {
-  const { user, login } = useAuth();
+  const { user, login,setUser } = useAuth();
   const router = useRouter();
   const backend = process.env.NEXT_PUBLIC_BACKEND_URL;
   const [email, setEmail] = useState("");
@@ -29,16 +29,22 @@ export default function LoginPage() {
         email,
         password,
       });
-      console.log("Login response:", res);
       
       if (res.data.status === 200) {
-        alert('done')
         toast.success("Login successful");
         router.push("/");
         localStorage.setItem("token", res.data.token);
+        setUser(res.data.user);
         login(res.data.user);
+        if(res.data.user.role === "Mentor") {
+          router.push("/mentor/dashboard");
+        } else if(res.data.user.role === "Mentee") {
+          router.push("/mentee/dashboard");
+        }else if(res.data.user.role === "admin") {
+          router.push("/admin/dashboard");
+        }
         localStorage.setItem("user", JSON.stringify(res.data.user));
-        console.log(user);
+        
       } else {
 
         toast.error(res.data.message);
